@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset='utf-8'>
+    <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <link rel="icon" href="data:image/png;base64,iVBORw0KGgo=">
     <link rel="stylesheet" type="text/css" href="css/easy-responsive-tabs.css " />
     <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
     <script src="js/easyResponsiveTabs.js"></script>
@@ -17,9 +18,15 @@
             padding: 0;
             font-family: 'Segoe UI';
         }
+        h1 {
+            border-bottom: 1px solid #ccc;
+        }
         p {
             margin: 0;
             padding: 0;
+        }
+        .content p {
+            padding: 0 0 0.5em 0;
         }
         #container {
             width: 940px;
@@ -36,124 +43,112 @@
 <body>
     <div id="container">
 
-        <h1 style="font-size:32px">Easy Responsive Tabs to Accordion (with Nested Tabs)</h1>
-        <hr>
-        <br/>
-        <br/>
+        <h1>Easy Responsive Tabs to Accordion (with Nested Tabs)</h1>
 
-        <h2>Horizontal Tab with (Nested Tabs) </h2>
-        <br/>
-        <!--Horizontal Tab-->
-        <div id="parentHorizontalTab">
-            <ul class="resp-tabs-list hor_1">
-                <li>Horizontal 1</li>
-                <li>Horizontal 2</li>
-                <li>Horizontal 3</li>
-            </ul>
-            <div class="resp-tabs-container hor_1">
-                <div>
-                    <p>
-                        <!--vertical Tabs-->
+        <nav>
+             <a href="./">Default (no preselected)</a> |
+             <a href="#" onclick="location.href='./#parentHorizontalTab2'; location.reload(); return false;">Horizontal 2 preselected</a> |
+             <a href="#" onclick="location.href='./#parentHorizontalTab1|ChildVerticalTab_12|parentVerticalTab3'; location.reload(); return false;">Horizontal 1, Responsive Tab 2, Vertical 3 preselected</a>
+        </nav>
 
-                        <div id="ChildVerticalTab_1">
-                            <ul class="resp-tabs-list ver_1">
-                                <li>Responsive Tab 1</li>
-                                <li>Responsive Tab 2</li>
-                                <li>Responsive Tab 3</li>
-                                <li>Long name Responsive Tab 4</li>
-                            </ul>
-                            <div class="resp-tabs-container ver_1">
-                                <div>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum nibh urna, euismod ut ornare non, volutpat vel tortor. Integer laoreet placerat suscipit. Sed sodales scelerisque commodo. Nam porta cursus lectus. Proin nunc erat, gravida a facilisis quis, ornare id lectus. Proin consectetur nibh quis urna gravida mollis.</p>
-                                </div>
-                                <div>
-                                    <p>Lorem ipsum dolor sit amet, lerisque commodo. Nam porta cursus lectusconsectetur adipiscing elit. Vestibulum nibh urna, euismod ut ornare non, volutpat vel tortor. Integer laoreet placerat suscipit. Sed sodales sce. Proin nunc erat, gravida a facilisis quis, ornare id lectus</p>
-                                </div>
-                                <div>
-                                    <p>Suspendisse blandit velit Integer laoreet placerat suscipit. Sed sodales scelerisque commodo. Nam porta cursus lectus. Proin nunc erat, gravida a facilisis quis, ornare id lectus. Proin consectetur nibh quis Integer laoreet placerat suscipit. Sed sodales scelerisque commodo. Nam porta cursus lectus. Proin nunc erat, gravida a facilisis quis, ornare id lectus. Proin consectetur nibh quis urna gravid urna gravid eget erat suscipit in malesuada odio venenatis.</p>
-                                </div>
-                                <div>
-                                    <p>d ut ornare non, volutpat vel tortor. InLorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum nibh urna, euismod ut ornare non, volutpat vel tortor. Integer laoreet placerat suscipit. Sed sodales scelerisque commodo. Nam porta cursus lectus. Proin nunc erat, gravida a facilisis quis, ornare id lectus. Proin consectetur nibh quis urna gravida mollis.t in malesuada odio venenatis.</p>
+        <main>
+
+            <h2>Horizontal Tab with (Nested Tabs) </h2>
+
+            <!--Horizontal Tab-->
+            <div id="parentHorizontalTab">
+                <ul class="resp-tabs-list hor_1">
+                    <li>Horizontal 1</li>
+                    <li>Horizontal 2</li>
+                    <li>Horizontal 3</li>
+                </ul>
+                <div class="resp-tabs-container hor_1">
+                    <div>
+                        <p>
+                            <!--vertical Tabs-->
+
+                            <div id="ChildVerticalTab_1">
+                                <ul class="resp-tabs-list ver_1">
+                                    <li>Responsive Tab 1</li>
+                                    <li>Responsive Tab 2</li>
+                                    <li>Responsive Tab 3</li>
+                                    <li>Long name Responsive Tab 4</li>
+                                </ul>
+                                <div class="resp-tabs-container ver_1">
+                                    <div>
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum nibh urna, euismod ut ornare non, volutpat vel tortor. Integer laoreet placerat suscipit. Sed sodales scelerisque commodo. Nam porta cursus lectus. Proin nunc erat, gravida a facilisis quis, ornare id lectus. Proin consectetur nibh quis urna gravida mollis.</p>
+                                    </div>
+                                    <div>
+                                        <p>Lorem ipsum dolor sit amet, lerisque commodo. Nam porta cursus lectusconsectetur adipiscing elit. Vestibulum nibh urna, euismod ut ornare non, volutpat vel tortor. Integer laoreet placerat suscipit. Sed sodales sce. Proin nunc erat, gravida a facilisis quis, ornare id lectus</p>
+                                    </div>
+                                    <div>
+                                        <p>Suspendisse blandit velit Integer laoreet placerat suscipit. Sed sodales scelerisque commodo. Nam porta cursus lectus. Proin nunc erat, gravida a facilisis quis, ornare id lectus. Proin consectetur nibh quis Integer laoreet placerat suscipit. Sed sodales scelerisque commodo. Nam porta cursus lectus. Proin nunc erat, gravida a facilisis quis, ornare id lectus. Proin consectetur nibh quis urna gravid urna gravid eget erat suscipit in malesuada odio venenatis.</p>
+                                    </div>
+                                    <div>
+                                        <p>d ut ornare non, volutpat vel tortor. InLorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum nibh urna, euismod ut ornare non, volutpat vel tortor. Integer laoreet placerat suscipit. Sed sodales scelerisque commodo. Nam porta cursus lectus. Proin nunc erat, gravida a facilisis quis, ornare id lectus. Proin consectetur nibh quis urna gravida mollis.t in malesuada odio venenatis.</p>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </p>
-                    <p>Tab 1 Container</p>
-                </div>
-                <div>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum nibh urna, euismod ut ornare non, volutpat vel tortor. Integer laoreet placerat suscipit. Sed sodales scelerisque commodo. Nam porta cursus lectus. Proin nunc erat, gravida a facilisis quis, ornare id lectus. Proin consectetur nibh quis urna gravida mollis.
-                    <br>
-                    <br>
-                    <p>Tab 2 Container</p>
-                </div>
-                <div>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum nibh urna, euismod ut ornare non, volutpat vel tortor. Integer laoreet placerat suscipit. Sed sodales scelerisque commodo. Nam porta cursus lectus. Proin nunc erat, gravida a facilisis quis, ornare id lectus. Proin consectetur nibh quis urna gravida mollis.
-                    <br>
-                    <br>
-                    <p>Tab 3 Container</p>
+                        </p>
+                        <p>Tab 1 Container</p>
+                    </div>
+                    <div>
+                        <p><a href="#">Lorem ipsum</a> dolor sit amet, consectetur adipiscing elit. Vestibulum nibh urna, euismod ut ornare non, volutpat vel tortor. Integer laoreet placerat suscipit. Sed sodales scelerisque commodo. Nam porta cursus lectus. Proin nunc erat, gravida a facilisis quis, ornare id lectus. Proin consectetur nibh quis urna gravida mollis.</p>
+                        <p>Tab 2 Container</p>
+                    </div>
+                    <div>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum nibh urna, euismod ut ornare non, volutpat vel tortor. Integer laoreet placerat suscipit. Sed sodales scelerisque commodo. Nam porta cursus lectus. Proin nunc erat, gravida a facilisis quis, ornare id lectus. Proin consectetur nibh quis urna gravida mollis.</p>
+                        <p>Tab 3 Container</p>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div id="nested-tabInfo">
-            Selected tab: <span class="tabName"></span>
-        </div>
-        <br/>
-        <br/>
-        <br/>
+            <div id="nested-tabInfo">
+                Selected tab: <span class="tabName"></span>
+            </div>
 
+            <p>&nbsp;</p>
 
-        <h2>Vertical Tab with (Nested Tabs) </h2>
-        <br/>
-        <!--Vertical Tab-->
-        <div id="parentVerticalTab">
-            <ul class="resp-tabs-list hor_1">
-                <li>Vertical 1</li>
-                <li>Vertical 2</li>
-                <li>Vertical 3</li>
-            </ul>
-            <div class="resp-tabs-container hor_1">
-                <div>
-                    Lorem ipsum dolor sit amet, lerisque commodo. Nam porta cursus lectusconsectetur adipiscing elit. Vestibulum nibh urna, euismod ut ornare non, volutpat vel tortor. Integer laoreet placerat suscipit. Sed sodales sce. Proin nunc erat, gravida a facilisis quis, ornare id lectus.
-                    <br>
-                    <br>
-                    <p>Tab 1 Container</p>
-                </div>
-                <div>
-                    Lorem consectetur adipiscing elit. Vestibulum nibh urna, euismod ut ornare non, volutpat vel tortor. Integer laoreet placerat suscipit. Sed sodales scelerisque commodo. Nam porta cursus lectus. Proin nunc erat, gravida a facilisis quis, ornare id lectus. Proin consectetur nibh quis.
-                    <br>
-                    <br>
-                    <p>Tab 2 Container</p>
-                </div>
-                <div>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum nibh urna, euismod ut ornare non, volutpat vel tortor. Integer laoreet placerat suscipit. Sed sodales scelerisque commodo. Nam porta cursus lectus. Proin nunc erat, gravida a facilisis quis, ornare id lectus. Proin consectetur nibh quis urna gravida mollis.
-                    <br>
-                    <br>
-                    <p>Tab 3 Container</p>
+            <h2>Vertical Tab with (Nested Tabs) </h2>
+
+            <!--Vertical Tab-->
+            <div id="parentVerticalTab">
+                <ul class="resp-tabs-list ver_2">
+                    <li>Vertical 1</li>
+                    <li>Vertical 2</li>
+                    <li>Vertical 3</li>
+                </ul>
+                <div class="resp-tabs-container ver_2">
+                    <div>
+                        <p>Lorem ipsum dolor sit amet, lerisque commodo. Nam porta cursus lectusconsectetur adipiscing elit. Vestibulum nibh urna, euismod ut ornare non, volutpat vel tortor. Integer laoreet placerat suscipit. Sed sodales sce. Proin nunc erat, gravida a facilisis quis, ornare id lectus.</p>
+                        <p>Tab 1 Container</p>
+                    </div>
+                    <div>
+                        <p>Lorem consectetur adipiscing elit. Vestibulum nibh urna, euismod ut ornare non, volutpat vel tortor. Integer laoreet placerat suscipit. Sed sodales scelerisque commodo. Nam porta cursus lectus. Proin nunc erat, gravida a facilisis quis, ornare id lectus. Proin consectetur nibh quis.</p>
+                        <p>Tab 2 Container</p>
+                    </div>
+                    <div>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum nibh urna, euismod ut ornare non, volutpat vel tortor. Integer laoreet placerat suscipit. Sed sodales scelerisque commodo. Nam porta cursus lectus. Proin nunc erat, gravida a facilisis quis, ornare id lectus. Proin consectetur nibh quis urna gravida mollis.</p>
+                        <p>Tab 3 Container</p>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div id="nested-tabInfo2">
-            Selected tab: <span class="tabName"></span>
-        </div>
+            <div id="nested-tabInfo2">
+                Selected tab: <span class="tabName"></span>
+            </div>
 
-        <br>
-        <br>
-        <br/>
-        <div class="content">
-            <h2>For any support</h2> Samson Onna
-            <br> My email: <a href="mailto:samson3d@gmail.com" target="_blank">samson3d@gmail.com</a>
-            <br>
-            <a href="http://www.linkedin.com/pub/samson-onnapuram/15/966/4b0" target="_blank">My LinkedIn Profile</a>
-            <br>
+            <p>&nbsp;</p>
 
-        </div>
+            <div class="content">
+                <h2>For any support</h2>
+                <p>Samson Onna</p>
+                <p>My email: <a href="mailto:samson3d@gmail.com" target="_blank">samson3d@gmail.com</a></p>
+                <p><a href="http://www.linkedin.com/pub/samson-onnapuram/15/966/4b0" target="_blank">My LinkedIn Profile</a></p>
+            </div>
+        </main>
 
         <footer>
             Easy-responsive-tabs-to-accordion is developed by <a href="https://github.com/samsono/Easy-Responsive-Tabs-to-Accordion">Samson</a>
         </footer>
-        <br>
-        <br>
-        <br/>
     </div>
 
 	<!--Plug-in Initialisation-->
@@ -165,6 +160,7 @@
             width: 'auto', //auto or any width like 600px
             fit: true, // 100% fit in a container
             tabidentify: 'hor_1', // The tab groups identifier
+            accordionTitleHeading: 'h3',
             activate: function(event) { // Callback function if tab is switched
                 var $tab = $(this);
                 var $info = $('#nested-tabInfo');
@@ -183,7 +179,8 @@
             activetab_bg: '#fff', // background color for active tabs in this group
             inactive_bg: '#F5F5F5', // background color for inactive tabs in this group
             active_border_color: '#c1c1c1', // border color for active tabs heads in this group
-            active_content_border_color: '#5AB1D0' // border color for active tabs contect in this group so that it matches the tab head border
+            active_content_border_color: '#5AB1D0', // border color for active tabs contect in this group so that it matches the tab head border
+            accordionTitleHeading: 'h4',
         });
 
         //Vertical Tab
@@ -192,7 +189,8 @@
             width: 'auto', //auto or any width like 600px
             fit: true, // 100% fit in a container
             closed: 'accordion', // Start closed if in accordion view
-            tabidentify: 'hor_1', // The tab groups identifier
+            tabidentify: 'ver_2', // The tab groups identifier
+            accordionTitleHeading: 'h3',
             activate: function(event) { // Callback function if tab is switched
                 var $tab = $(this);
                 var $info = $('#nested-tabInfo2');
