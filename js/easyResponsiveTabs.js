@@ -24,7 +24,7 @@
             //Variables
             var options = $.extend(defaults, options);
             var opt = options, jtype = opt.type, jfit = opt.fit, jwidth = opt.width, vtabs = 'vertical', accord = 'accordion';
-            var hash = window.location.hash;
+            var tabHashList = [];
             var historyApi = !!(window.history && history.replaceState);
 
             //Events
@@ -91,7 +91,8 @@
                 var $tabContent;
                 $respTabs.find('.resp-tab-item').each(function (index) {
                     var $tabItem = $(this);
-                    $tabItem.attr('id', options.tabidentify + '_tab_item-' + index);
+                    var id = options.tabidentify + '_tab_item-' + index;
+                    $tabItem.attr('id', id);
                     $tabItem.attr('aria-controls', options.tabidentify + '_tab_content-' + index);
                     $tabItem.attr('role', 'tab');
                     $tabItem.attr('aria-selected', 'false');
@@ -100,6 +101,10 @@
                         'background-color': options.inactive_bg,
                         'border-color': 'none'
                     });
+                    if ($tabItem.data("hash") == null) {
+                        $tabItem.data("hash", id);
+                    }
+                    tabHashList.push($tabItem.data("hash"));
                 });
 
                 //Assigning the 'aria-labelledby' attr to tab-content
@@ -114,15 +119,13 @@
 
                 // Show correct content area
                 var tabNum = 0;
-                if (hash != '') {
-                    var matches = hash.match(new RegExp(respTabsId + "([0-9]+)"));
-                    if (matches !== null && matches.length === 2) {
-                        tabNum = parseInt(matches[1], 10) - 1;
-                        var count = $respTabs.find('.resp-tab-item').length;
-                        if (tabNum >= count) {
-                            tabNum = 0;
+                var currentHashValues = getCurrentHashValues();
+                if (currentHashValues.length > 0) {
+                    tabHashList.forEach(function (tabHash, index) {
+                        if (currentHashValues.includes(tabHash) && tabNum === 0) {
+                            tabNum = index;
                         }
-                    }
+                    });
                 }
 
                 //Active correct tab
@@ -295,28 +298,34 @@
 
                         //Update Browser History
                         if (historyApi) {
-                            var currentHash = window.location.hash;
-                            var tabAriaParts = tabAria.split('tab_content-');
-                             // var newHash = respTabsId + (parseInt(tabAria.substring(9), 10) + 1).toString();
-                            var newHash = respTabsId + (parseInt(tabAriaParts[1], 10) + 1).toString();
-                            if (currentHash != "") {
-                                var re = new RegExp(respTabsId + "[0-9]+");
-                                if (currentHash.match(re) != null) {
-                                    newHash = currentHash.replace(re, newHash);
+                            // 1. check if in the current hash values is a value fom the tabValues and id yes, replace them with the new one
+                            var currentHashValues = getCurrentHashValues();
+                            var replacedHash = false;
+                            tabHashList.forEach(function (hashValue) {
+                                var index = currentHashValues.indexOf(hashValue);
+                                if (index >= 0 && !replacedHash) {
+                                    currentHashValues[index] = $currentTab.data('hash');
+                                    replacedHash = true;
                                 }
-                                else {
-                                    newHash = currentHash + "|" + newHash;
+                            });
+                            // 2. if the hash list is empty or no value from the tabValues is present, add the new value to the hash list
+                            if (!replacedHash) {
+                                currentHashValues.push($currentTab.data('hash'));
                             }
-                            }
-                            else {
-                                newHash = '#' + newHash;
-                            }
-
-                            history.replaceState(null, null, newHash);
+                            // 3. replace the hash in the browser history
+                            history.replaceState(null, null, '#' + currentHashValues.join('|'));
                         }
                     };
 
                 });
+
+                function getCurrentHashValues() {
+                    var hash = window.location.hash.replace(/^#/, '');
+                    if (hash === '') {
+                        return [];
+                    }
+                    return hash.split('|');
+                }
 
                 //Window resize function
                 $(window).resize(function () {
