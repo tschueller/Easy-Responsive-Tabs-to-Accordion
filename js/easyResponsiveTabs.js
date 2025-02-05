@@ -1,5 +1,8 @@
-// Easy Responsive Tabs Plugin
-// Author: Samson.Onna <Email : samson3d@gmail.com>
+/*!
+ *  Easy Responsive Tabs Plugin
+ *  Author: Samson.Onna <Email : samson3d@gmail.com>
+ *  Modified by: Thorsten Schüller 2025 (made it accessible)
+ */
 (function ($) {
     $.fn.extend({
         easyResponsiveTabs: function (options) {
@@ -87,7 +90,7 @@
                 //Assigning the 'aria-controls' to Tab items
                 var $tabContent;
                 $respTabs.find('.resp-tab-item').each(function (index) {
-                    $tabItem = $(this);
+                    var $tabItem = $(this);
                     $tabItem.attr('id', options.tabidentify + '_tab_item-' + index);
                     $tabItem.attr('aria-controls', options.tabidentify + '_tab_content-' + index);
                     $tabItem.attr('role', 'tab');
@@ -101,7 +104,7 @@
 
                 //Assigning the 'aria-labelledby' attr to tab-content
                 $respTabs.find('.resp-tab-content.' + options.tabidentify).each(function (contentIndex) {
-                    $tabContent = $(this);
+                    var $tabContent = $(this);
                     $tabContent.attr('id', options.tabidentify + '_tab_content-' + contentIndex);
                     $tabContent.attr('role', 'tabpanel');
                     $tabContent.attr('aria-labelledby', options.tabidentify + '_tab_item-' + contentIndex).css({
@@ -202,7 +205,7 @@
 
                     function handleTabClick(event) {
                         var $currentTab = $(event.currentTarget);
-                        var $tabAria = $currentTab.attr('aria-controls');
+                        var tabAria = $currentTab.attr('aria-controls');
 
                         if ($currentTab.hasClass('resp-accordion') && $currentTab.hasClass('resp-tab-active')) {
                             // handle accordion click: collapse
@@ -235,7 +238,7 @@
 
                             $respTabs.find('.resp-tab-content-active.' + options.tabidentify).slideUp().removeClass('resp-tab-content-active resp-accordion-closed');
 
-                            var $tabAndHeader = $respTabs.find("[aria-controls=" + $tabAria + "]");
+                            var $tabAndHeader = $respTabs.find("[aria-controls=" + tabAria + "]");
                             $tabAndHeader.addClass('resp-tab-active').css({
                                 'background-color': options.activetab_bg,
                                 'border-color': options.active_border_color
@@ -250,7 +253,7 @@
                                 }
                             });
 
-                            $respTabs.find('#' + $tabAria + '.resp-tab-content.' + options.tabidentify).slideDown().addClass('resp-tab-content-active');
+                            $respTabs.find('#' + tabAria + '.resp-tab-content.' + options.tabidentify).slideDown().addClass('resp-tab-content-active');
                         } else {
                             // handle tab click
                             $activeTabAndHeader = $respTabs.find('.resp-tab-active.' + options.tabidentify);
@@ -270,7 +273,7 @@
 
                             $respTabs.find('.resp-tab-content-active.' + options.tabidentify).removeAttr('style').removeClass('resp-tab-content-active').removeClass('resp-accordion-closed');
 
-                            var $tabAndHeader = $respTabs.find("[aria-controls=" + $tabAria + "]")
+                            var $tabAndHeader = $respTabs.find("[aria-controls=" + tabAria + "]")
                             $tabAndHeader.addClass('resp-tab-active').css({
                                 'background-color': options.activetab_bg,
                                 'border-color': options.active_border_color
@@ -285,7 +288,7 @@
                                 }
                             });
 
-                            $respTabs.find('#' + $tabAria + '.resp-tab-content.' + options.tabidentify).addClass('resp-tab-content-active').attr('style', 'display:block');
+                            $respTabs.find('#' + tabAria + '.resp-tab-content.' + options.tabidentify).addClass('resp-tab-content-active').attr('style', 'display:block');
                         }
                         //Trigger tab activation event
                         $currentTab.trigger('tabactivate', $currentTab);
@@ -293,8 +296,8 @@
                         //Update Browser History
                         if (historyApi) {
                             var currentHash = window.location.hash;
-                            var tabAriaParts = $tabAria.split('tab_content-');
-                             // var newHash = respTabsId + (parseInt($tabAria.substring(9), 10) + 1).toString();
+                            var tabAriaParts = tabAria.split('tab_content-');
+                             // var newHash = respTabsId + (parseInt(tabAria.substring(9), 10) + 1).toString();
                             var newHash = respTabsId + (parseInt(tabAriaParts[1], 10) + 1).toString();
                             if (currentHash != "") {
                                 var re = new RegExp(respTabsId + "[0-9]+");
@@ -303,7 +306,7 @@
                                 }
                                 else {
                                     newHash = currentHash + "|" + newHash;
-                                }
+                            }
                             }
                             else {
                                 newHash = '#' + newHash;

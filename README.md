@@ -15,6 +15,7 @@ Features
 + Link directly to specified tab (works with multiple instances)
 + Maintains state of tabs when navigating away from page and then returning using back or forward (if browser supports the History API)
 + Nested tabs
++ Accessibility support
 
 Demo
 ====
@@ -30,59 +31,59 @@ How to use
 => Include responsive-tabs.css
 => Here is the Markup for Tabs structure (non nested tabs):
 
-        <div id="demoTab">          
+        <div id="demoTab">
             <ul class="resp-tabs-list">
                 <li> .... </li>
                 <li> .... </li>
                 <li> .... </li>
-            </ul> 
+            </ul>
 
-            <div class="resp-tabs-container">                                                        
+            <div class="resp-tabs-container">
                 <div> ....... </div>
                 <div> ....... </div>
                 <div> ....... </div>
             </div>
-        </div>    
+        </div>
 
 => Here is the Markup for Tabs structure (nested tabs):
 
-        <div id="ParentTab">          
+        <div id="ParentTab">
         <ul class="resp-tabs-list tab_identifier_parent">
             <li> .... </li>
             <li> .... </li>
             <li> .... </li>
-        </ul> 
+        </ul>
 
-        <div class="resp-tabs-container tab_identifier_parent">                                                     
+        <div class="resp-tabs-container tab_identifier_parent">
             <div>
-               <p> 
-                  <div id="ChildTab">          
+               <p>
+                  <div id="ChildTab">
                     <ul class="resp-tabs-list tab_identifier_child">
                        <li> .... </li>
                        <li> .... </li>
                        <li> .... </li>
-                    </ul> 
+                    </ul>
 
                     <div class="resp-tabs-container tab_identifier_child">                                                                     <div> ....... </div>
                        <div> ....... </div>
                        <div> ....... </div>
                     </div>
-                  </div>    
+                  </div>
                </p>
             </div>
             <div> ....... </div>
             <div> ....... </div>
         </div>
-    </div>  
+    </div>
 
 => Call the easyResponsiveTabs function:
 
         $('#demoTab').easyResponsiveTabs();
-        
+
 => With optional parameters:
 
         $("#demoTab").easyResponsiveTabs({
-        type: 'default', //Types: default, vertical, accordion           
+        type: 'default', //Types: default, vertical, accordion
         width: 'auto', //auto or any custom width
         fit: true,   // 100% fits in a container
         closed: false, // Close the panels on start, the options 'accordion' and 'tabs' keep them closed in there respective view types
@@ -95,7 +96,7 @@ How to use
     });
 
 => Linking to Tabs:
-        
+
         http://yoursite.com/tabs.html#{TAB ID}{TAB NUM}
         http://yoursite.com/tabs.html#demoTab2
 
@@ -105,5 +106,5 @@ How to use
 
 For any support
 ===============
-Samson 
+Samson
 Email: samson3d@gmail.com
