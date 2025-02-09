@@ -48,17 +48,18 @@ ul.resp-tabs-list {
 	border-top-color: #5AB1D0;
 }
 
-h1.resp-accordion, h2.resp-accordion, h3.resp-accordion, h4.resp-accordion, h5.resp-accordion, h6.resp-accordion {
+.resp-accordion {
     cursor: pointer;
     display: none;
     font-size: 13px;
+    font-weight: bold;
     border: 1px solid #c1c1c1;
     border-top: 0px solid #c1c1c1;
     margin: 0px;
     padding: 10px 15px;
 }
 
-h1.resp-tab-active, h2.resp-tab-active, h3.resp-tab-active, h4.resp-tab-active, h5.resp-tab-active, h6.resp-tab-active {
+.resp-accordion.resp-tab-active {
     border-bottom: 0px solid #c1c1c1 !important;
     margin-bottom: 0px !important;
     padding: 10px 15px !important;
@@ -116,7 +117,7 @@ h1.resp-tab-active, h2.resp-tab-active, h3.resp-tab-active, h4.resp-tab-active, 
     border-top: 12px solid #c1c1c1;
 }
 
-h2.resp-tab-active span.resp-arrow {
+.resp-accordion.resp-tab-active span.resp-arrow {
     border: none;
     border-left: 6px solid transparent;
     border-right: 6px solid transparent;
@@ -124,7 +125,7 @@ h2.resp-tab-active span.resp-arrow {
 }
 
 /*-----------Accordion styles-----------*/
-.resp-easy-accordion h2.resp-accordion {
+.resp-easy-accordion .resp-accordion {
     display: block;
 }
 
@@ -145,7 +146,7 @@ h2.resp-tab-active span.resp-arrow {
     display: block;
 }
 
-h1.resp-accordion:first-child, h2.resp-accordion:first-child, h3.resp-accordion:first-child, h4.resp-accordion:first-child, h5.resp-accordion:first-child, h6.resp-accordion:first-child {
+.resp-accordion:first-child {
     border-top: 1px solid #c1c1c1;/* !important;*/
 }
 
@@ -155,7 +156,7 @@ h1.resp-accordion:first-child, h2.resp-accordion:first-child, h3.resp-accordion:
         display: none;
     }
 
-    h1.resp-accordion, h2.resp-accordion, h3.resp-accordion, h4.resp-accordion, h5.resp-accordion, h6.resp-accordion {
+    .resp-accordion {
         display: block;
     }
 
