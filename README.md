@@ -15,6 +15,7 @@ Features
 + Link directly to specified tab (works with multiple instances)
 + Maintains state of tabs when navigating away from page and then returning using back or forward (if browser supports the History API)
 + Nested tabs
++ Accessibility support
 
 Demo
 ====
