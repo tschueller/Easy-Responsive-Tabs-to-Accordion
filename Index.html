@@ -60,7 +60,7 @@
                 <ul class="resp-tabs-list hor_1">
                     <li data-hash="parentHorizontalTab-One">Horizontal 1</li>
                     <li data-hash="parentHorizontalTab-Two">Horizontal 2</li>
-                    <li data-hash="parentHorizontalTab-Three">Horizontal 3</li>
+                    <li data-hash="parentHorizontalTab-Three" data-reset-hashes="true">Horizontal 3</li>
                 </ul>
                 <div class="resp-tabs-container hor_1">
                     <div>
@@ -161,6 +161,7 @@
             fit: true, // 100% fit in a container
             tabidentify: 'hor_1', // The tab groups identifier
             accordionTitleHeading: 'h3',
+            hashSeparator: ';',
             activate: function(event) { // Callback function if tab is switched
                 var $tab = $(this);
                 var $info = $('#nested-tabInfo');
@@ -181,6 +182,7 @@
             active_border_color: '#c1c1c1', // border color for active tabs heads in this group
             active_content_border_color: '#5AB1D0', // border color for active tabs contect in this group so that it matches the tab head border
             accordionTitleHeading: 'h4',
+            hashSeparator: ';',
         });
 
         //Vertical Tab
@@ -191,6 +193,7 @@
             closed: 'accordion', // Start closed if in accordion view
             tabidentify: 'ver_2', // The tab groups identifier
             accordionTitleHeading: 'h3',
+            hashSeparator: ';',
             activate: function(event) { // Callback function if tab is switched
                 var $tab = $(this);
                 var $info = $('#nested-tabInfo2');

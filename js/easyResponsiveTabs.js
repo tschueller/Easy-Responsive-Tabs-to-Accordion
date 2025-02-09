@@ -18,6 +18,7 @@
                 active_border_color: '#c1c1c1',
                 active_content_border_color: '#c1c1c1',
                 accordionTitleHeading: 'h2',
+                hashSeparator: '|',
                 activate: function () {
                 }
             }
@@ -298,8 +299,8 @@
 
                         //Update Browser History
                         if (historyApi) {
-                            // 1. check if in the current hash values is a value fom the tabValues and id yes, replace them with the new one
-                            var currentHashValues = getCurrentHashValues();
+                            // 1. check if in the current hash values is a value fom the tabValues and if yes, replace them with the new one
+                            var currentHashValues = $currentTab.data('reset-hashes') ? [] : getCurrentHashValues();
                             var replacedHash = false;
                             tabHashList.forEach(function (hashValue) {
                                 var index = currentHashValues.indexOf(hashValue);
@@ -313,7 +314,7 @@
                                 currentHashValues.push($currentTab.data('hash'));
                             }
                             // 3. replace the hash in the browser history
-                            history.replaceState(null, null, '#' + currentHashValues.join('|'));
+                            history.replaceState(null, null, '#' + currentHashValues.join(options.hashSeparator));
                         }
                     };
 
@@ -324,7 +325,7 @@
                     if (hash === '') {
                         return [];
                     }
-                    return hash.split('|');
+                    return hash.split(options.hashSeparator);
                 }
 
                 //Window resize function

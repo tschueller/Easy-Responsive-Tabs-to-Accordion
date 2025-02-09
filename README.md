@@ -76,13 +76,13 @@ How to use
         </div>
     </div>
 
-=> If specific hash values are required, they can be defined in the Markup with a data-hash attribute:
+=> If specific hash values are required, they can be defined in the Markup with a `data-hash` attribute. And if the complete hash should be reset when the tab is clicked, the `data-reset-hashed` attribute can be set to true
 
     <div id="demoTab">
         <ul class="resp-tabs-list">
             <li data-hash="the-first-tab"> .... </li>
             <li data-hash="the-second-tab"> .... </li>
-            <li data-hash="the-third-tab"> .... </li>
+            <li data-hash="the-third-tab" reset-hashed="true"> .... </li>
         </ul>
 
         <div class="resp-tabs-container">
@@ -110,6 +110,7 @@ How to use
         active_border_color: '#9C905C', // border color for active tabs heads in this group
         active_content_border_color: '#9C905C' // border color for active tabs content in this group so that it matches the tab head border
         accordionTitleHeading: 'h2', // The heading tag that will be used for the accordion title
+        hashSeparator: '|' // you can now specify a custom hash separator to separate the selected tabs
     });
 
 => Linking to Tabs:
