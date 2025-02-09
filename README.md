@@ -111,6 +111,8 @@ How to use
         active_content_border_color: '#9C905C' // border color for active tabs content in this group so that it matches the tab head border
         accordionTitleHeading: 'h2', // The heading tag that will be used for the accordion title
         hashSeparator: '|' // you can now specify a custom hash separator to separate the selected tabs
+        modechange: function() {},  // Callback function, gets called when mode is switched between 'accordion' and 'tabs'
+        });
     });
 
 => Linking to Tabs:

@@ -168,6 +168,9 @@
                 var $name = $('span', $info);
                 $name.text($tab.text());
                 $info.show();
+            },
+            modechange: function(newMode, oldMode) {
+                console.log('modechange event called:', $(this).attr('id'), newMode, $(this));
             }
         });
 
@@ -182,7 +185,7 @@
             active_border_color: '#c1c1c1', // border color for active tabs heads in this group
             active_content_border_color: '#5AB1D0', // border color for active tabs contect in this group so that it matches the tab head border
             accordionTitleHeading: 'h4',
-            hashSeparator: ';',
+            hashSeparator: ';'
         });
 
         //Vertical Tab

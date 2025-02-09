@@ -20,6 +20,8 @@
                 accordionTitleHeading: 'h2',
                 hashSeparator: '|',
                 activate: function () {
+                },
+                modechange: function () {
                 }
             }
             //Variables
@@ -27,11 +29,17 @@
             var opt = options, jtype = opt.type, jfit = opt.fit, jwidth = opt.width, vtabs = 'vertical', accord = 'accordion';
             var tabHashList = [];
             var historyApi = !!(window.history && history.replaceState);
+            var currentMode = null; // 'tabs' or 'accordion'
 
             //Events
             $(this).on('tabactivate', function (e, currentTab) {
                 if (typeof options.activate === 'function') {
                     options.activate.call(currentTab, e)
+                }
+            });
+            $(this).on('modechange', function (e, respTabs, newMode, oldMode) {
+                if (typeof options.modechange === 'function') {
+                    options.modechange.call(respTabs, newMode, oldMode)
                 }
             });
 
@@ -148,6 +156,19 @@
                 //assign proper classes for when tabs mode is activated before making a selection in accordion mode
                 else {
                    // $($respTabs.find('.resp-tab-content.' + options.tabidentify)[tabNum]).addClass('resp-accordion-closed'); //removed resp-tab-content-active
+                }
+
+                // Check the current mode (accordion or tabs)
+                checkCurrentMode();
+
+                //Trigger initial tab activation event (if a tab is active and visible)
+                if (currentMode === 'tabs') {
+                    $currentTab = $($respTabs.find('.resp-tab-item.' + options.tabidentify + '.resp-tab-active'));
+                } else {
+                    $currentTab = $($respTabs.find('.resp-accordion.' + options.tabidentify + '.resp-tab-active'));
+                }
+                if ($currentTab.is(':visible')) {
+                    $currentTab.trigger('tabactivate', $currentTab);
                 }
 
                 //Tab Click action function
@@ -328,12 +349,25 @@
                     return hash.split(options.hashSeparator);
                 }
 
+                function checkCurrentMode() {
+                    var accordion = $respTabs.find('>ul.resp-tabs-list').is(":hidden");
+                    var newMode = accordion ? 'accordion' : 'tabs';
+                    if (currentMode !== newMode) {
+                        $respTabs.toggleClass('accordion-mode', accordion).toggleClass('tabs-mode', !accordion);
+                        if ($respTabs.is(':visible')) {
+                            $respTabs.trigger('modechange', [ $respTabs, newMode, currentMode ]);
+                    }
+                        currentMode = newMode;
+                    }
+                }
+
                 //Window resize function
-                $(window).resize(function () {
+                $(window).on("resize", function () {
                     $respTabs.find('.resp-accordion-closed').removeAttr('style');
+                    // Trigger mode change event when mode was changed
+                    checkCurrentMode();
                 });
             });
         }
     });
 })(jQuery);
-
