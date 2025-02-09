@@ -30,59 +30,59 @@ How to use
 => Include responsive-tabs.css
 => Here is the Markup for Tabs structure (non nested tabs):
 
-        <div id="demoTab">          
+        <div id="demoTab">
             <ul class="resp-tabs-list">
                 <li> .... </li>
                 <li> .... </li>
                 <li> .... </li>
-            </ul> 
+            </ul>
 
-            <div class="resp-tabs-container">                                                        
+            <div class="resp-tabs-container">
                 <div> ....... </div>
                 <div> ....... </div>
                 <div> ....... </div>
             </div>
-        </div>    
+        </div>
 
 => Here is the Markup for Tabs structure (nested tabs):
 
-        <div id="ParentTab">          
+        <div id="ParentTab">
         <ul class="resp-tabs-list tab_identifier_parent">
             <li> .... </li>
             <li> .... </li>
             <li> .... </li>
-        </ul> 
+        </ul>
 
-        <div class="resp-tabs-container tab_identifier_parent">                                                     
+        <div class="resp-tabs-container tab_identifier_parent">
             <div>
-               <p> 
-                  <div id="ChildTab">          
+               <p>
+                  <div id="ChildTab">
                     <ul class="resp-tabs-list tab_identifier_child">
                        <li> .... </li>
                        <li> .... </li>
                        <li> .... </li>
-                    </ul> 
+                    </ul>
 
                     <div class="resp-tabs-container tab_identifier_child">                                                                     <div> ....... </div>
                        <div> ....... </div>
                        <div> ....... </div>
                     </div>
-                  </div>    
+                  </div>
                </p>
             </div>
             <div> ....... </div>
             <div> ....... </div>
         </div>
-    </div>  
+    </div>
 
 => Call the easyResponsiveTabs function:
 
         $('#demoTab').easyResponsiveTabs();
-        
+
 => With optional parameters:
 
         $("#demoTab").easyResponsiveTabs({
-        type: 'default', //Types: default, vertical, accordion           
+        type: 'default', //Types: default, vertical, accordion
         width: 'auto', //auto or any custom width
         fit: true,   // 100% fits in a container
         closed: false, // Close the panels on start, the options 'accordion' and 'tabs' keep them closed in there respective view types
@@ -91,11 +91,14 @@ How to use
         activetab_bg: '#B5AC5F', // background color for active tabs in this group
         inactive_bg: '#E0D78C', // background color for inactive tabs in this group
         active_border_color: '#9C905C', // border color for active tabs heads in this group
-        active_content_border_color: '#9C905C' // border color for active tabs contect in this group so that it matches the tab head border
+        active_content_border_color: '#9C905C' // border color for active tabs content in this group so that it matches the tab head border
+        accordionTitleElement: 'h2', // The element that will be used for the accordion title
+        accordionTitleClass: 'accordion-title', // The accordion title class
+        });
     });
 
 => Linking to Tabs:
-        
+
         http://yoursite.com/tabs.html#{TAB ID}{TAB NUM}
         http://yoursite.com/tabs.html#demoTab2
 
@@ -105,5 +108,5 @@ How to use
 
 For any support
 ===============
-Samson 
+Samson
 Email: samson3d@gmail.com

@@ -150,7 +150,7 @@
             Easy-responsive-tabs-to-accordion is developed by <a href="https://github.com/samsono/Easy-Responsive-Tabs-to-Accordion">Samson</a>
         </footer>
     </div>
-	
+
 	<!--Plug-in Initialisation-->
 	<script type="text/javascript">
     $(document).ready(function() {
@@ -160,7 +160,7 @@
             width: 'auto', //auto or any width like 600px
             fit: true, // 100% fit in a container
             tabidentify: 'hor_1', // The tab groups identifier
-            accordionTitleHeading: 'h3',
+            accordionTitleElement: 'div',
             activate: function(event) { // Callback function if tab is switched
                 var $tab = $(this);
                 var $info = $('#nested-tabInfo');

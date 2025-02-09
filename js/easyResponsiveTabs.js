@@ -14,7 +14,8 @@
                 inactive_bg: '#F5F5F5',
                 active_border_color: '#c1c1c1',
                 active_content_border_color: '#c1c1c1',
-                accordionTitleHeading: 'h2',
+                accordionTitleElement: 'h2',
+                accordionTitleClass: 'accordion-title',
                 activate: function () {
                 }
             }
@@ -65,9 +66,9 @@
 
                 //Assigning the h2 markup to accordion title
                 var $tabItemHeader;
-                $respTabs.find('.resp-tab-content.' + options.tabidentify).before("<" + options.accordionTitleHeading + " class='resp-accordion " + options.tabidentify + "'><span class='resp-arrow'></span></" + options.accordionTitleHeading +">");
+                $respTabs.find('.resp-tab-content.' + options.tabidentify).before("<" + options.accordionTitleElement + " class='resp-accordion " + options.tabidentify + " " + options.accordionTitleClass + "'><span class='resp-arrow'></span></" + options.accordionTitleElement +">");
 
-                $respTabs.find('.resp-tab-content.' + options.tabidentify).prev(options.accordionTitleHeading).css({
+                $respTabs.find('.resp-tab-content.' + options.tabidentify).prev(options.accordionTitleElement).css({
                     'background-color': options.inactive_bg,
                     'border-color': options.active_border_color
                 });
@@ -169,7 +170,7 @@
                                 break;
                             case 'ArrowDown':
                                 if (accordion) {
-                                    elmToFocus = $currentTab.nextAll(options.accordionTitleHeading+':first').get(0);
+                                    elmToFocus = $currentTab.nextAll(options.accordionTitleElement+':first').get(0);
                                 } else {
                                     elmToFocus = verticalTabs ? event.currentTarget.nextElementSibling : null;
                                 }
@@ -177,7 +178,7 @@
                                 break;
                             case 'ArrowUp':
                                 if (accordion) {
-                                    elmToFocus = $currentTab.prevAll(options.accordionTitleHeading+':first').get(0);
+                                    elmToFocus = $currentTab.prevAll(options.accordionTitleElement+':first').get(0);
                                 } else {
                                     elmToFocus = verticalTabs ? event.currentTarget.previousElementSibling : null;
                                 }
