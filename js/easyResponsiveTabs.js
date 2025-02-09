@@ -170,7 +170,7 @@
                                 break;
                             case 'ArrowDown':
                                 if (accordion) {
-                                    elmToFocus = $currentTab.nextAll(options.accordionTitleElement+':first').get(0);
+                                    elmToFocus = $currentTab.nextAll().filter('.resp-accordion.' + options.tabidentify).get(0);
                                 } else {
                                     elmToFocus = verticalTabs ? event.currentTarget.nextElementSibling : null;
                                 }
@@ -178,7 +178,7 @@
                                 break;
                             case 'ArrowUp':
                                 if (accordion) {
-                                    elmToFocus = $currentTab.prevAll(options.accordionTitleElement+':first').get(0);
+                                    elmToFocus = $currentTab.prevAll().filter('.resp-accordion.' + options.tabidentify).get(0);
                                 } else {
                                     elmToFocus = verticalTabs ? event.currentTarget.previousElementSibling : null;
                                 }
